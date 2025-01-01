@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Availability</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="availability-container">
+        <h1>Available Doctors</h1>
+        <div class="doctor-card">
+            <h2>Dr. Emily Carter</h2>
+            <p><strong>Specialization:</strong> Cardiologist</p>
+            <p><strong>Available:</strong> Tuesday, Thursday: 9:00 AM - 12:00 PM</p>
+            <a href="https://calendly.com/mayankkatiyara04/1hr?preview_source=et_card&month=2024-11" target="_blank" class="book-appointment">Book Appointment</a>
+        </div>
+        <div class="doctor-card">
+            <h2>Dr. John Matthews</h2>
+            <p><strong>Specialization:</strong> Orthopedist</p>
+            <p><strong>Available:</strong> Monday, Friday: 1:00 PM - 5:00 PM</p>
+            <a href="https://calendly.com/john-matthews" target="_blank" class="book-appointment">Book Appointment</a>
+        </div>
+        <!-- Add more doctor cards as needed -->
+    </div>
+    <div class='card' style='width: 18rem; margin: 10px;'>
+        <div class='card-body'>
+          <h2 class='card-title'>Dr. Emily Carter</h5>
+          <h5 class='card-subtitle mb-2 text-muted'>Cardiologist</h6>
+          <p class='card-text'><strong>Availability:</strong> Tuesday, Thursday: 9:00 AM - 12:00 PM</p>
+          <a href='calendly_link_here' target='_blank' class='btn btn-primary'>Book Appointment</a>
+        </div>
+    </div>
+    
+</body>
+</html>

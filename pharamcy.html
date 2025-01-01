@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Medicine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Resetting some default styles */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f6fa;
+            color: #2f3542;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('static/images/Order_medicine.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #3498db;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 30px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 12px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Content Area Styling */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+            flex: 1;
+            background-color: #ecf0f1;
+            overflow-y: auto;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2980b9;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, button:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .status-message {
+            font-weight: bold;
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .case-list {
+            margin-top: 40px;
+        }
+
+        .case-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-item h3 {
+            color: #2980b9;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .case-item p {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+        }
+
+        .case-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .case-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .sidebar {
+                width: 200px;
+                padding: 20px;
+            }
+
+            .sidebar h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>DocEase Dashboard</h2>
+      <ul>
+          <li><a href="index.html">Chatbot</a></li>
+          <li><a href="pharamcy.html">Order meds</a></li>
+          <li><a href="ai-translation.html">AI Translation</a></li>
+          <li><a href="urgent_cases.html">Urgent Care</a></li> 
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content">
+      <h1><b>From Love to Medicines , we deliver all !</b></h1>
+
+
+      
+
+      <!-- Order Medicine Section -->
+      <div class="form-container">
+        <h2>Search Drug Information</h2>
+        <form id="search-drug-form">
+          <label for="drug-name">Drug Name:</label>
+          <input
+            type="text"
+            id="drug-name"
+            name="drug-name"
+            placeholder="Enter drug name..."
+          />
+          <button type="submit">Search</button>
+        </form>
+        <div id="drug-results" class="status-message"></div>
+      </div>
+      
+      
+      <style>
+        .form-container {
+          background-color: #f9f9f9;
+          padding: 20px;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          max-width: 500px;
+          margin: 0 auto;
+          right: 20px;
+        }
+
+      
+      
+        .form-container label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          display: block;
+        }
+      
+        .form-container input,
+        .form-container textarea {
+          width: 100%;
+          margin-bottom: 15px;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-size: 1rem;
+        }
+      
+        .form-container button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 1rem;
+        }
+      
+        .form-container button:hover {
+          background-color: #0056b3;
+        }
+      
+        .success-message {
+          color: green;
+          margin-top: 10px;
+        }
+      
+        .error-message {
+          color: red;
+          margin-top: 10px;
+        }
+      </style>
+    <script>
+
+      // Handle Medication Order Placement
+      document.getElementById("search-drug-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const drugName = document.getElementById("drug-name").value.trim();
+
+  if (!drugName) {
+    document.getElementById("drug-results").innerHTML =
+      "<p class='error-message'>Please enter a drug name to search.</p>";
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:5000/search-drug", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ drug_name: drugName }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      const results = result.results || [];
+
+      if (results.length > 0) {
+        const formattedResults = results
+          .map((item) => {
+            const drugName = item.patient.drug[0]?.medicinalproduct || "Unknown";
+            const reaction = item.patient.reaction[0]?.reactionmeddrapt || "No reaction data";
+            const link = `https://open.fda.gov/`; // Add any specific link here if needed
+            return `<p><strong>Drug:</strong> ${drugName}<br><strong>Reaction:</strong> ${reaction}<br><a href="${link}" target="_blank">View on OpenFDA</a></p>`;
+          })
+          .join("");
+
+        document.getElementById("drug-results").innerHTML = formattedResults;
+      } else {
+        document.getElementById("drug-results").innerHTML =
+          "<p>No results found for the given drug name.</p>";
+      }
+    } else {
+      const error = await response.json();
+      document.getElementById("drug-results").innerHTML =
+        `<p class='error-message'>Error: ${error.error || 'Failed to fetch data.'}</p>`;
+    }
+  } catch (error) {
+    console.error("Error searching drug information:", error);
+    document.getElementById("drug-results").innerHTML =
+      "<p class='error-message'>An unexpected error occurred. Please try again later.</p>";
+  }
+});
+</script>
+  </body>
+</html>

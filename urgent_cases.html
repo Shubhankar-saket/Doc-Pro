@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urgent Case Handling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Resetting some default styles */
+        body, h1, h2, p, a {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f6fa;
+            color: #2f3542;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('static/images/urgent_care.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: right;
+            background-attachment: fixed;
+            background-repeat: repeat;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #3498db;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 30px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 12px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Content Area Styling */
+        .content {
+            margin-left: 250px;
+            padding: 40px;
+            flex: 1;
+            background-color: #ecf0f1;
+            overflow-y: auto;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #2980b9;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus, button:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .status-message {
+            font-weight: bold;
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .case-list {
+            margin-top: 40px;
+        }
+
+        .case-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-item h3 {
+            color: #2980b9;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .case-item p {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+        }
+
+        .case-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .case-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .sidebar {
+                width: 200px;
+                padding: 20px;
+            }
+
+            .sidebar h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>DocEase Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Chatbot</a></li>
+            <li><a href="pharamcy.html">Order meds</a></li>
+            <li><a href="ai-translation.html">AI Translation</a></li>
+            <li><a href="urgent_cases.html">Urgent Care</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <h1>Urgent Case Reporting</h1>
+
+            <!-- Form for submitting urgent cases -->
+            <form id="urgent-case-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age" required>
+
+                <label for="symptoms">Symptoms</label>
+                <textarea id="symptoms" name="symptoms" placeholder="Describe your symptoms" required></textarea>
+
+                <button type="submit">Report Case</button>
+            </form>
+
+            <div id="status-message" class="status-message"></div>
+
+            <!-- List of urgent cases -->
+            <div class="case-list" id="case-list">
+                <h2>Reported Urgent Cases</h2>
+                <!-- Cases will be dynamically populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch and display urgent cases
+        async function fetchCases() {
+            const response = await fetch("http://127.0.0.1:5000/api/urgent-cases");
+            const cases = await response.json();
+            const caseList = document.getElementById("case-list");
+            caseList.innerHTML = `<h2>Reported Urgent Cases</h2>`; // Reset list
+    
+            cases.forEach((caseItem) => {
+                let display = `
+                    <div class="case-item">
+                        <h3>${caseItem.name}</h3>
+                        <p><strong>Age:</strong> ${caseItem.age}</p>
+                        <p><strong>Symptoms:</strong> ${caseItem.symptoms}</p>
+                        <p><strong>Urgency Level:</strong> ${caseItem.urgency}</p>
+                        <p><strong>Assigned Doctor:</strong> ${caseItem.doctor || "Pending"}</p>
+                `;
+    
+                // Check if the case has a Calendly link
+                if (caseItem["Urgent meeting"]) {
+                    display += `
+                        <p><strong>Urgent Meeting Link:</strong>
+                        <a href="${caseItem['Urgent meeting']}" target="_blank">Schedule Meeting</a></p>
+                    `;
+                }
+    
+                display += `</div>`;
+                caseList.innerHTML += display; // Append each case to the list
+            });
+        }
+    
+        // Event listener for form submission
+        document.getElementById("urgent-case-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+    
+            const formData = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                symptoms: document.getElementById("symptoms").value,
+            };
+    
+            const response = await fetch("http://127.0.0.1:5000/api/report-case", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+    
+            const result = await response.json();
+            const statusMessage = document.getElementById("status-message");
+            statusMessage.textContent = result.message || "Error reporting case";
+    
+            // Refresh the list of cases
+            fetchCases();
+        });
+    
+        // Fetch cases on page load
+        document.addEventListener("DOMContentLoaded", fetchCases);
+    </script>
+</body>
+</html>
